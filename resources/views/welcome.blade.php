@@ -41,14 +41,24 @@
     <!-- Navbar Start -->
     <div class="container-fluid bg-primary">
         <div class="container">
-            <nav class="navbar navbar-dark navbar-expand-lg py-0">
+            <nav class="navbar navbar-dark navbar-expand-lg py-0 d-flex justify-content-between">
                 <a href="{{ route('welcome') }}" class="navbar-brand">
                     <h1 class="text-white fw-bold d-block">Sign<span class="text-secondary">Lingo</span> </h1>
                 </a>
-                {{-- <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button> --}}
+                <div class="float-right">
+                    @auth
+                        <button type="button" class="btn btn-outline-danger"
+                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            <span>{{ __('Logout') }}</span>
+                        </button>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    @endauth
+
+                </div>
+
             </nav>
         </div>
     </div>
@@ -124,7 +134,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
     <!-- Carousel End -->
