@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\category;
-use App\Models\Content;
+use App\Models\Level;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +12,7 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(category $category)
     {
         //
     }
@@ -55,6 +55,11 @@ class CategoryController extends Controller
         //
     }
 
+
+    public function showAll(Level $level)
+    {
+        
+    }
     /**
      * Show the form for editing the specified resource.
      */
