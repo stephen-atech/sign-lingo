@@ -56,6 +56,11 @@ class LevelController extends Controller
         //
     }
 
+    public function showAll(level $level)
+    {
+        //
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -70,6 +75,19 @@ class LevelController extends Controller
     public function update(Request $request, level $level)
     {
         //
+        try {
+            DB::beginTransaction();
+
+            $level->name = $request->name;
+            $level->save();
+
+            DB::commit();
+            return redirect()->back()->with('success', 'New level updated!!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
     }
 
     /**

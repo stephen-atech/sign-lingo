@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LevelController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
@@ -40,10 +43,22 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin.access']) ->group(function (){
-        Route::get('/admin-try', function(){
-            dd('admin route');
-        });
+        // level
+        Route::get('/levels',[LevelController::class,'index'])->name('levels');
+        Route::post('/level/add',[LevelController::class,'store'])->name('level.add');
+        
+        // category
+        Route::get('/categories/{category}',[CategoryController::class,'index'])->name('level.category');
+        Route::post('/category/add', [CategoryController::class, 'store'])->name('category.add');
+        
+        // content
+        Route::get('/contents/{content}',[ContentController::class,'index'])->name('contents');
+        Route::post('/content/add', [ContentController::class, 'store'])->name('content.add');
     });
+    
+    Route::get('/levels/page',[LevelController::class,'index'])->name('user.levels');
+    Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('level.category');
+
 });
 
 Auth::routes();
