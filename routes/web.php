@@ -55,12 +55,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/contents/{content}',[ContentController::class,'index'])->name('contents');
         Route::post('/content/add', [ContentController::class, 'store'])->name('content.add');
     });
+
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
     
+
     Route::get('/levels/page',[LevelController::class,'index'])->name('user.levels');
     Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('level.category');
 
 });
 
 Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
