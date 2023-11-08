@@ -14,6 +14,10 @@ class LevelController extends Controller
     public function index()
     {
         //
+        if(auth()->user()->isAdmin){
+            $levels = Level::all();
+            return view('admin.level',compact('levels'));
+        }
     }
 
     /**
@@ -35,7 +39,7 @@ class LevelController extends Controller
             
 
             $level = new Level();
-            $level->name = $request->name;
+            $level->name = $request->levelName;
             $level->save();
 
             DB::commit();

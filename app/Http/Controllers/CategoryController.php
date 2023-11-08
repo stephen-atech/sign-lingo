@@ -12,9 +12,13 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(category $category)
+    public function index(Level $level)
     {
         //
+        if (auth()->user()->isAdmin) {
+            $categories = $level->categories;
+            return view('admin.categories', compact('categories','level'));
+        }
     }
 
     /**
@@ -34,8 +38,8 @@ class CategoryController extends Controller
             DB::beginTransaction();
             
             $category = new Category();
-            $category->level_id = $request->level;
-            $category->name = $request->name;
+            $category->level_id = $request->levelId;
+            $category->name = $request->CategoryName;
             $category->save();
 
             DB::commit();
