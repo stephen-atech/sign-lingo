@@ -39,7 +39,7 @@ Route::get('/storage/app/public/images/content/{filename}', function ($filename)
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin.access']) ->group(function (){

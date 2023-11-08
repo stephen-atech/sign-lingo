@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>SignLingo</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -20,14 +20,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -42,7 +42,7 @@
     <div class="container-fluid bg-primary">
         <div class="container">
             <nav class="navbar navbar-dark navbar-expand-lg py-0">
-                <a href="index.html" class="navbar-brand">
+                <a href="{{ route('welcome') }}" class="navbar-brand">
                     <h1 class="text-white fw-bold d-block">Sign<span class="text-secondary">Lingo</span> </h1>
                 </a>
                 <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
@@ -67,18 +67,16 @@
                     <img src="{{ asset('img/carousel-1.jpg') }}" class="img-fluid" alt="First slide">
                     <div class="carousel-caption">
                         <div class="container carousel-content">
-                            <h6 class="text-secondary h4 animated fadeInUp">Best IT Solutions</h6>
-                            <h1 class="text-white display-1 mb-4 animated fadeInRight">An Innovative IT Solutions Agency
+                            <h6 class="text-secondary h4 animated fadeInUp">Sign Language Solutions</h6>
+                            <h1 class="text-white display-1 mb-4 animated fadeInRight">An Innovative Way of Learning Sign<i class="fa fa-language" aria-hidden="true"></i>
                             </h1>
-                            <p class="mb-4 text-white fs-5 animated fadeInDown">Lorem ipsum dolor sit amet elit. Sed
-                                efficitur quis purus ut interdum. Pellentesque aliquam dolor eget urna ultricies
-                                tincidunt.</p>
+                            <p class="mb-4 text-white fs-5 animated fadeInDown">We provide you with all the bases needed to kick start your journey to a whole new world of communication.</p>
                             @auth
-                                <a href="{{route('home')}}" class="ms-2"><button type="button"
+                                <a href="{{ route('home') }}" class="ms-2"><button type="button"
                                         class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Continue
                                         Learnig</button></a>
                             @else
-                                <a href="{{route('home')}}" class="ms-2"><button type="button"
+                                <a href="{{ route('home') }}" class="ms-2"><button type="button"
                                         class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Start
                                         Learnig</button></a>
                             @endauth
@@ -90,18 +88,15 @@
                     <img src=" {{ asset('img/carousel-2.jpg') }}" class="img-fluid" alt="Second slide">
                     <div class="carousel-caption">
                         <div class="container carousel-content">
-                            <h6 class="text-secondary h4 animated fadeInUp">Best IT Solutions</h6>
-                            <h1 class="text-white display-1 mb-4 animated fadeInLeft">Quality Digital Services You
-                                Really Need!</h1>
-                            <p class="mb-4 text-white fs-5 animated fadeInDown">Lorem ipsum dolor sit amet elit. Sed
-                                efficitur quis purus ut interdum. Pellentesque aliquam dolor eget urna ultricies
-                                tincidunt.</p>
+                            <h6 class="text-secondary h4 animated fadeInUp">Sign Language Solutions</h6>
+                            <h1 class="text-white display-1 mb-4 animated fadeInLeft">All You Need to Know to Master the Signs</h1>
+                            <p class="mb-4 text-white fs-5 animated fadeInDown">Master all the sign from our learning platform, here you get to learn all the basic things in sign languaging. After a completion of our programms you would be a pro at communicatinn in signs.</p>
                             @auth
-                                <a href="{{route('home')}}" class="ms-2"><button type="button"
+                                <a href="{{ route('home') }}" class="ms-2"><button type="button"
                                         class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Continue
                                         Learnig</button></a>
                             @else
-                                <a href="{{route('home')}}" class="ms-2"><button type="button"
+                                <a href="{{ route('home') }}" class="ms-2"><button type="button"
                                         class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Start
                                         Learnig</button></a>
                             @endauth
