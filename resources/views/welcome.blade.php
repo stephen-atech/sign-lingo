@@ -41,14 +41,24 @@
     <!-- Navbar Start -->
     <div class="container-fluid bg-primary">
         <div class="container">
-            <nav class="navbar navbar-dark navbar-expand-lg py-0">
+            <nav class="navbar navbar-dark navbar-expand-lg py-0 d-flex justify-content-between">
                 <a href="{{ route('welcome') }}" class="navbar-brand">
                     <h1 class="text-white fw-bold d-block">Sign<span class="text-secondary">Lingo</span> </h1>
                 </a>
-                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="float-right">
+                    @auth
+                        <button type="button" class="btn btn-outline-danger"
+                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            <span>{{ __('Logout') }}</span>
+                        </button>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    @endauth
+
+                </div>
+
             </nav>
         </div>
     </div>
@@ -68,13 +78,23 @@
                     <div class="carousel-caption">
                         <div class="container carousel-content">
                             <h6 class="text-secondary h4 animated fadeInUp">Sign Language Solutions</h6>
-                            <h1 class="text-white display-1 mb-4 animated fadeInRight">An Innovative Way of Learning Sign<i class="fa fa-language" aria-hidden="true"></i>
+                            <h1 class="text-white display-1 mb-4 animated fadeInRight">An Innovative Way of Learning
+                                Sign<i class="fa fa-language" aria-hidden="true"></i>
                             </h1>
-                            <p class="mb-4 text-white fs-5 animated fadeInDown">We provide you with all the bases needed to kick start your journey to a whole new world of communication.</p>
+                            <p class="mb-4 text-white fs-5 animated fadeInDown">We provide you with all the bases needed
+                                to kick start your journey to a whole new world of communication.</p>
                             @auth
                                 <a href="{{ route('home') }}" class="ms-2"><button type="button"
-                                        class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Continue
-                                        Learnig</button></a>
+                                        class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">
+
+                                        @if (auth()->user()->isAdmin)
+                                            Dashboard
+                                        @else
+                                            Continue
+                                            Learnig
+                                        @endif
+
+                                    </button></a>
                             @else
                                 <a href="{{ route('home') }}" class="ms-2"><button type="button"
                                         class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Start
@@ -89,12 +109,22 @@
                     <div class="carousel-caption">
                         <div class="container carousel-content">
                             <h6 class="text-secondary h4 animated fadeInUp">Sign Language Solutions</h6>
-                            <h1 class="text-white display-1 mb-4 animated fadeInLeft">All You Need to Know to Master the Signs</h1>
-                            <p class="mb-4 text-white fs-5 animated fadeInDown">Master all the sign from our learning platform, here you get to learn all the basic things in sign languaging. After a completion of our programms you would be a pro at communicatinn in signs.</p>
+                            <h1 class="text-white display-1 mb-4 animated fadeInLeft">All You Need to Know to Master the
+                                Signs</h1>
+                            <p class="mb-4 text-white fs-5 animated fadeInDown">Master all the sign from our learning
+                                platform, here you get to learn all the basic things in sign languaging. After a
+                                completion of our programms you would be a pro at communicatinn in signs.</p>
                             @auth
                                 <a href="{{ route('home') }}" class="ms-2"><button type="button"
-                                        class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Continue
-                                        Learnig</button></a>
+                                        class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">
+                                        @if (auth()->user()->isAdmin)
+                                            Dashboard
+                                        @else
+                                            Continue
+                                            Learnig
+                                        @endif
+
+                                    </button></a>
                             @else
                                 <a href="{{ route('home') }}" class="ms-2"><button type="button"
                                         class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Start
@@ -104,14 +134,7 @@
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+
         </div>
     </div>
     <!-- Carousel End -->
