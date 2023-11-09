@@ -3,11 +3,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h4>{{$level->name}} Level Categories</h4>
+                <h4 style="opacity: 70%; display:flex">{{$level->name}} Level Categories</h4>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3 mb-3">
+                <button type="button" class="btn btn-dark" onclick="history.back()">
+                    Back
+                </button>
+            </div>
+            <div class="col-md-3 mb-3 ms-auto">
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCategoryModal">
                     Add Category
                 </button>

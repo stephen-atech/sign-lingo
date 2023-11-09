@@ -2,12 +2,13 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <h4>Levels</h4>
+            <div class="col-md-3 text-center">
+                <h4 style="opacity: 70%; display:flex;">Levels</h4>
             </div>
         </div>
         <br>
         <div class="row">
+          
             <div class="col-md-3 mb-3">
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addLevelModal">
                     Add Level
