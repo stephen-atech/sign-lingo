@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="table table-bordered border-success" style="width: 100%">
+                            <table id="example" class="table table-striped" style="width: 100%">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -29,7 +29,7 @@
                                         <tr>
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
-                                            <td>{{$user->phonenumber}}h</td>
+                                            <td>{{$user->phonenumber}}</td>
                                             <td>{{ $user->created_at->format('D, d M Y h:i:s a') }}</td>
                                         </tr>
                                     @endforeach

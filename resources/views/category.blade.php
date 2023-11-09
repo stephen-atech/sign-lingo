@@ -7,7 +7,7 @@
           text-transform: capitalize;
           font-size: 5em;
         ">
-            levels
+            Level Cat
         </h2>
     </div>
 
@@ -15,13 +15,13 @@
         <div class="container card">
             <div class="bttn">
                 <div class="levels">
-                    <a href="cathegory.html" class="btn active">Beginner</a>
+                    <a href="#.html" class="btn active">Alphabets</a>
                 </div>
                 <div class="levels">
-                    <a href="" class="btn disabled">Intermediate</a>
+                    <a href="" class="btn disabled">Words</a>
                 </div>
                 <div class="levels">
-                    <a href="" class="btn disabled">Advanced</a>
+                    <a href="" class="btn disabled">Sentences</a>
                 </div>
             </div>
         </div>
