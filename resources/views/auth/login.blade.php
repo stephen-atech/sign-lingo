@@ -80,7 +80,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{{asset('css/loginstyle.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/loginstyle.css') }}">
 </head>
 
 <body>
@@ -92,16 +92,25 @@
                     Login
                     <span class="underline"></span>
                 </button>
-                <form class="form form-login">
+                <form class="form form-login" method="POST" action="{{ route('login') }}">
+                    @csrf
                     <fieldset>
                         <legend>Please, enter your email and password for login.</legend>
                         <div class="input-block">
                             <label for="login-email">E-mail</label>
-                            <input id="login-email" type="email" required>
+                            <input id="login-email" type="email" required
+                                class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
+                                required autocomplete="email" autofocus>
+                            @error('email')
+                                <span class="invalid-feedback"  role="alert">
+                                    <strong style="color: red;">{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="input-block">
                             <label for="login-password">Password</label>
-                            <input id="login-password" type="password" required>
+                            <input id="login-password" type="password"  class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
                         </div>
                     </fieldset>
                     <button type="submit" class="btn-login">Login</button>
@@ -133,7 +142,7 @@
             </div>
         </div>
     </section>
-    <script src="{{asset('js/loginapp.js')}} "></script>
+    <script src="{{ asset('js/loginapp.js') }} "></script>
 </body>
 
 </html>
