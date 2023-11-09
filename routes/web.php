@@ -50,11 +50,13 @@ Route::middleware(['auth'])->group(function () {
         // category
         Route::get('/categories/{level}',[CategoryController::class,'index'])->name('level.category');
         Route::post('/category/add', [CategoryController::class, 'store'])->name('category.add');
+        Route::delete('/category-delete{category}',[CategoryController::class, 'destroy'])->name('category.delete');
         
         // content
         Route::get('/contents/{category}',[ContentController::class,'index'])->name('contents');
         Route::post('/content/add', [ContentController::class, 'store'])->name('content.add');
         Route::put('/content/update', [ContentController::class, 'update'])->name('content.update');
+        
         
         Route::get('/users', [HomeController::class, 'users'])->name('admin.users');
     });
