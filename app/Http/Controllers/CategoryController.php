@@ -16,8 +16,7 @@ class CategoryController extends Controller
     {
         //
         if (auth()->user()->isAdmin) {
-            $categories = $level->categories;
-            return view('admin.categories', compact('categories','level'));
+            return view('admin.categories', compact('level'));
         }
     }
 
@@ -47,7 +46,7 @@ class CategoryController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
 
-            return redirect()->back()->with('error', 'Something went wrong');
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 

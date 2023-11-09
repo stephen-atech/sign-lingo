@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h4>Categories</h4>
+                <h4>{{$level->name}} Level Categories</h4>
             </div>
         </div>
         <div class="row">
@@ -15,20 +15,19 @@
         </div>
         <br>
         <div class="row">
-            @foreach ($categories as $category)
+            @foreach ($level->categories as $category)
                 <div class="col-md-3 mb-3">
                     <div class="card h-100">
                         <div class="card-body d-flex flex-column align-items-center justify-content-center">
                             <h4 class="card-title text-center">{{$category->name}}</h4>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
-                            <a href="#" class="btn btn-primary">Contents</a>
+                            <a href="{{route('contents',$category->id)}}" class="btn btn-primary">Contents</a>
                             <a href="#" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                 </div>
             @endforeach
-
         </div>
 
     </div>

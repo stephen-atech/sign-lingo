@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\content;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,9 +13,12 @@ class ContentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(content $content)
+    public function index(Category $category)
     {
         //
+        if(auth()->user()->isAdmin){
+            return view('admin.content',compact('category'));
+        }
     }
 
     /**

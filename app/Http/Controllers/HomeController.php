@@ -28,4 +28,8 @@ class HomeController extends Controller
         }
         return view('home');
     }
+
+    public function users(){
+        return view('admin.user');
+    }
 }

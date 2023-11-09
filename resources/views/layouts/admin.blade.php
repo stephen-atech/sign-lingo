@@ -10,6 +10,9 @@
 
     <link rel="stylesheet" href="{{ asset('css/admincss/css/dataTables.bootstrap5.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/admincss/css/style.css') }}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -82,7 +85,7 @@
 
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-3">
+                        <a href="{{route('admin.users')}}" class="nav-link px-3">
                             <span class="me-2"><i class="fas fa-users"></i></span>
                             <span>Users</span>
                         </a>
@@ -95,6 +98,31 @@
         @yield('content')
     </main>
 
+    @if (Session::has('success'))
+        <script>
+            swal("Success", "{{ Session::get('success') }}", 'success', {
+                button: "OK",
+                // timer: 3000,
+            });
+        </script>
+    @endif
+    @if (Session::has('info'))
+        <script>
+            swal("Information", "{{ Session::get('info') }}", 'info', {
+                button: "OK",
+                // timer: 3000,
+            });
+        </script>
+    @endif
+    @if (Session::has('error'))
+        <script>
+            swal("Error", "{{ Session::get('error') }}", 'error', {
+                button: "OK",
+                // timer: 3000,
+                dangerMode: true,
+            });
+        </script>
+    @endif
     <script src="{{ asset('js/adminjs/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
     <script src="{{ asset('js/adminjs/js/jquery-3.5.1.js') }}"></script>

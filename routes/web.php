@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/category/add', [CategoryController::class, 'store'])->name('category.add');
         
         // content
-        Route::get('/contents/{content}',[ContentController::class,'index'])->name('contents');
+        Route::get('/contents/{category}',[ContentController::class,'index'])->name('contents');
         Route::post('/content/add', [ContentController::class, 'store'])->name('content.add');
     });
 
@@ -61,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/levels/page',[LevelController::class,'index'])->name('user.levels');
     Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('user.category');
+    Route::get('/users',[HomeController::class,'users'])->name('admin.users');
 
 });
 

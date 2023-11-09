@@ -1,4 +1,12 @@
- <div class="row">
+@extends('layouts.admin')
+@section('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h4>Users</h4>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12 mb-3">
                 <div class="card">
                     <div class="card-header">
@@ -50,7 +58,7 @@
                                         <td>2012/03/29</td>
                                         <td>$433,060</td>
                                     </tr>
-                             
+
                                 <tfoot>
                                     <tr>
                                         <th>Name</th>
@@ -67,3 +75,5 @@
                 </div>
             </div>
         </div>
+    </div>
+@endsection
