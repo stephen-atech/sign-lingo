@@ -12,6 +12,7 @@ class Content extends Model
         'category_id',
         'name',
         'image_url',
+        'description',
     ];
     
     public function category(){
