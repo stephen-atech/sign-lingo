@@ -1,9 +1,8 @@
-
 @extends('layouts.app')
 @section('content')
-
     <div class="container title">
-        <h2 class="title-labl fw-bold d-block" style="
+        <h2 class="title-labl fw-bold d-block"
+            style="
           color: hsl(0, 0%, 100%);
           text-transform: capitalize;
           font-size: 5em;
@@ -27,5 +26,4 @@
             </div>
         </div>
     </div>
-
-    @endsection
+@endsection

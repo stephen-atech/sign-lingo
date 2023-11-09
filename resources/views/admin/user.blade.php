@@ -29,7 +29,7 @@
                                         <tr>
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
-                                            <td>{{$user->phonenumber}}h</td>
+                                            <td>{{$user->phonenumber}}</td>
                                             <td>{{ $user->created_at->format('D, d M Y h:i:s a') }}</td>
                                         </tr>
                                     @endforeach
