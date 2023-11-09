@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
@@ -62,7 +63,11 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    
+
+    Route::get('/profile',[ ProfileController::class,'index'])->name('profile');
+    Route::post('/update-profile', [ProfileController::class,'updateName'])->name('update-profile');
+    Route::post('/update-password', [ProfileController::class,'updatePassword'])->name('update-password');
+
 
     Route::get('/levels/page',[LevelController::class,'index'])->name('user.levels');
     Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('user.category');

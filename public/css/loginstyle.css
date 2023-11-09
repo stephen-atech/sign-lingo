@@ -7,6 +7,7 @@
 body {
 	margin: 0;
 	font-family: Roboto, -apple-system, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+	position: relative;
 	background: url(../img/twosign.jpg) center/cover no-repeat;
 }
 
@@ -41,6 +42,7 @@ body {
 	50% {
 		z-index: 1;
 	}
+
 	100% {
 		z-index: 1;
 	}
@@ -50,6 +52,7 @@ body {
 	0% {
 		z-index: 1;
 	}
+
 	49.999% {
 		z-index: 1;
 	}
@@ -123,7 +126,7 @@ body {
 	min-width: 260px;
 	margin-top: 50px;
 	padding: 30px 25px;
-  border-radius: 5px;
+	border-radius: 5px;
 	transform-origin: top;
 }
 
@@ -137,12 +140,14 @@ body {
 
 @keyframes showLogin {
 	0% {
-		background: #d7e7f1;
+		background: #577486;
 		transform: translate(40%, 10px);
 	}
+
 	50% {
 		transform: translate(0, 0);
 	}
+
 	100% {
 		background-color: #fff;
 		transform: translate(35%, -20px);
@@ -154,11 +159,13 @@ body {
 		background-color: #fff;
 		transform: translate(35%, -20px);
 	}
+
 	50% {
 		transform: translate(0, 0);
 	}
+
 	100% {
-		background: #d7e7f1;
+		background: #476c84;
 		transform: translate(40%, 10px);
 	}
 }
@@ -173,12 +180,14 @@ body {
 
 @keyframes showSignup {
 	0% {
-		background: #d7e7f1;
+		background: #415f72;
 		transform: translate(-40%, 10px) scaleY(.8);
 	}
+
 	50% {
 		transform: translate(0, 0) scaleY(.8);
 	}
+
 	100% {
 		background-color: #fff;
 		transform: translate(-35%, -20px) scaleY(1);
@@ -190,9 +199,11 @@ body {
 		background-color: #fff;
 		transform: translate(-35%, -20px) scaleY(1);
 	}
+
 	50% {
 		transform: translate(0, 0) scaleY(.8);
 	}
+
 	100% {
 		background: #d7e7f1;
 		transform: translate(-40%, 10px) scaleY(.8);
@@ -236,7 +247,7 @@ body {
 
 .input-block label {
 	font-size: 14px;
-  color: #a1b4b4;
+	color: #a1b4b4;
 }
 
 .input-block input {
@@ -248,9 +259,9 @@ body {
 	font-size: 16px;
 	line-height: 40px;
 	color: #3b4465;
-  background: #eef9fe;
-  border: 1px solid #cddbef;
-  border-radius: 2px;
+	background: #eef9fe;
+	border: 1px solid #cddbef;
+	border-radius: 2px;
 }
 
 .form [type='submit'] {
