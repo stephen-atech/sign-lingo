@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\content;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,9 +13,12 @@ class ContentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(content $content)
+    public function index(Category $category)
     {
         //
+        if(auth()->user()->isAdmin){
+            return view('admin.content',compact('category'));
+        }
     }
 
     /**
@@ -34,6 +38,7 @@ class ContentController extends Controller
             DB::beginTransaction();
 
             $content = new Content();
+            
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 $imageName = time() . '_' . $image->getClientOriginalName();
@@ -45,6 +50,8 @@ class ContentController extends Controller
                 $content->image_url =  $imageName;
             }
             $content->name = $request->name;
+            $content->description = $request->description;
+            $content->category_id = $request->category;
             $content->save();
 
             DB::commit();
@@ -55,7 +62,7 @@ class ContentController extends Controller
             }
             DB::rollBack();
 
-            return redirect()->back()->with('error', 'Something went wrong');
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 

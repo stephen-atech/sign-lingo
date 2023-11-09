@@ -48,19 +48,23 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/level/add',[LevelController::class,'store'])->name('level.add');
         
         // category
-        Route::get('/categories/{category}',[CategoryController::class,'index'])->name('level.category');
+        Route::get('/categories/{level}',[CategoryController::class,'index'])->name('level.category');
         Route::post('/category/add', [CategoryController::class, 'store'])->name('category.add');
         
         // content
-        Route::get('/contents/{content}',[ContentController::class,'index'])->name('contents');
+        Route::get('/contents/{category}',[ContentController::class,'index'])->name('contents');
         Route::post('/content/add', [ContentController::class, 'store'])->name('content.add');
+        Route::put('/content/update', [ContentController::class, 'update'])->name('content.update');
+        
+        Route::get('/users', [HomeController::class, 'users'])->name('admin.users');
     });
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     
 
     Route::get('/levels/page',[LevelController::class,'index'])->name('user.levels');
-    Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('level.category');
+    Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('user.category');
+    
 
 });
 

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('level_id');
+            $table->string('name');
             $table->timestamps();
 
             $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
