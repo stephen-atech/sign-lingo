@@ -102,14 +102,15 @@
                                 class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
                                 required autocomplete="email" autofocus>
                             @error('email')
-                                <span class="invalid-feedback"  role="alert">
+                                <span class="invalid-feedback" role="alert">
                                     <strong style="color: red;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                         <div class="input-block">
                             <label for="login-password">Password</label>
-                            <input id="login-password" type="password"  class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            <input id="login-password" type="password" class="@error('password') is-invalid @enderror"
+                                name="password" required autocomplete="current-password">
 
                         </div>
                     </fieldset>
@@ -121,24 +122,50 @@
                     Sign Up
                     <span class="underline"></span>
                 </button>
-                <form class="form form-signup">
+                <form class="form form-signup" method="POST" action="{{ route('register') }}">
+                    @csrf
                     <fieldset>
                         <legend>Please, enter your email, password and password confirmation for sign up.</legend>
                         <div class="input-block">
+                            <label for="signup-email">Name</label>
+                            <input id="signup-name" type="text" class=" @error('name') is-invalid @enderror"
+                                name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong style="color: red;">{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="input-block">
                             <label for="signup-email">E-mail</label>
-                            <input id="signup-email" type="email" required>
+                            <input id="signup-email" type="email" class=" @error('email') is-invalid @enderror"
+                                name="email" value="{{ old('email') }}" required autocomplete="email">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong style="color: red;">{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="input-block">
                             <label for="signup-password">Password</label>
-                            <input id="signup-password" type="password" required>
+                            <input id="password" type="password"
+                                class="form-control @error('password') is-invalid @enderror" name="password" required
+                                autocomplete="new-password">
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong style="color: red;">{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="input-block">
                             <label for="signup-password-confirm">Confirm password</label>
-                            <input id="signup-password-confirm" type="password" required>
+                            <input id="password-confirm" type="password" class="form-control"
+                                name="password_confirmation" required autocomplete="new-password">
+
                         </div>
                     </fieldset>
                     <button type="submit" class="btn-signup">Continue</button>
-                </form>
+                    </>
             </div>
         </div>
     </section>
