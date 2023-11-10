@@ -413,6 +413,7 @@ section .container .row{
 .carousel.slide.carousel-fade{
 	width: 80%;
 	max-width: 80%;
+	height: 50vh;
 	margin-top: 100px;
-	border: 50px #000 solif;
+	border: 50px #000 solid;
 }
