@@ -31,13 +31,6 @@
 </head>
 
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner"
-        class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" role="status"></div>
-    </div>
-    <!-- Spinner End -->
-
     <!-- Navbar Start -->
     <div class="container-fluid bg-primary">
         <div class="container">
@@ -79,7 +72,7 @@
                         <div class="container carousel-content">
                             <h6 class="text-secondary h4 animated fadeInUp">Sign Language Solutions</h6>
                             <h1 class="text-white display-1 mb-4 animated fadeInRight">An Innovative Way of Learning
-                                Sign Language.
+                                Sign language.
                             </h1>
                             <p class="mb-4 text-white fs-5 animated fadeInDown">We provide you with all the bases needed
                                 to kick start your journey to a whole new world of communication.</p>
@@ -91,14 +84,18 @@
                                             Dashboard
                                         @else
                                             Continue
-                                            Learnig
+                                            Learning
                                         @endif
 
                                     </button></a>
                             @else
-                                <a href="{{ route('home') }}" class="ms-2"><button type="button"
-                                        class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Start
-                                        Learnig</button></a>
+                                <a href="{{ route('home') }}" class="ms-2">
+                                    <button type="button"
+                                        class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">
+                                        Start
+                                        Learning
+                                    </button>
+                                </a>
                             @endauth
 
                         </div>
@@ -110,7 +107,7 @@
                         <div class="container carousel-content">
                             <h6 class="text-secondary h4 animated fadeInUp">Sign Language Solutions</h6>
                             <h1 class="text-white display-1 mb-4 animated fadeInLeft">All You Need to Know to Master the
-                                Signs</h1>
+                                Signs.</h1>
                             <p class="mb-4 text-white fs-5 animated fadeInDown">Master all the sign from our learning
                                 platform, here you get to learn all the basic things in sign languaging. After a
                                 completion of our programms you would be a pro at communicatinn in signs.</p>

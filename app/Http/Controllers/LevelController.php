@@ -14,6 +14,12 @@ class LevelController extends Controller
     public function index()
     {
         //
+        $levels = Level::all();
+
+        if(auth()->user()->isAdmin){
+            return view('admin.level',compact('levels'));
+        }
+        return view('home',compact('levels'));
     }
 
     /**
@@ -35,7 +41,7 @@ class LevelController extends Controller
             
 
             $level = new Level();
-            $level->name = $request->name;
+            $level->name = $request->levelName;
             $level->save();
 
             DB::commit();
@@ -96,5 +102,15 @@ class LevelController extends Controller
     public function destroy(level $level)
     {
         //
+        // dd('deleted');
+        try {
+            DB::beginTransaction();
+            $level->delete();
+            DB::commit();
+            return redirect()->back()->with('success', 'Level Deleted');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'something went wrong');
+        }
     }
 }

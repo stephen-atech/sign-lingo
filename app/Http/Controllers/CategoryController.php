@@ -12,9 +12,13 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(category $category)
+    public function index(Level $level)
     {
         //
+        if (auth()->user()->isAdmin) {
+            return view('admin.categories', compact('level'));
+        }
+        return view('category',compact('level'));
     }
 
     /**
@@ -32,10 +36,10 @@ class CategoryController extends Controller
     {
         try {
             DB::beginTransaction();
-            
+
             $category = new Category();
-            $category->level_id = $request->level;
-            $category->name = $request->name;
+            $category->level_id = $request->levelId;
+            $category->name = $request->CategoryName;
             $category->save();
 
             DB::commit();
@@ -43,7 +47,7 @@ class CategoryController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
 
-            return redirect()->back()->with('error', 'Something went wrong');
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -58,7 +62,6 @@ class CategoryController extends Controller
 
     public function showAll(Level $level)
     {
-        
     }
     /**
      * Show the form for editing the specified resource.
@@ -82,5 +85,15 @@ class CategoryController extends Controller
     public function destroy(category $category)
     {
         //
+        // dd('deleted');
+        try {
+            DB::beginTransaction();
+            $category->delete();
+            DB::commit();
+            return redirect()->back()->with('success', 'Category Deleted');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'something went wrong');
+        }
     }
 }

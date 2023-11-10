@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,6 +27,13 @@ class HomeController extends Controller
         if(auth()->user()->isAdmin){
             return view('admin.home');
         }
-        return view('home');
+        return redirect()->route('user.levels');
     }
+
+    public function users()
+    {
+        $users = User::where('id', '!=', auth()->user()->id)->get();
+        return view('admin.user', compact('users'));
+    }
+
 }
