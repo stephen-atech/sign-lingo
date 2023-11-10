@@ -129,6 +129,7 @@
         </div>
     </div>
 
+    
     <div class="modal fade" id="editContentModal" tabindex="-1" role="dialog" aria-labelledby="editContentModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
