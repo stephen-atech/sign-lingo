@@ -92,7 +92,7 @@
                         <!-- Input field for description -->
                         <div class="mb-3">
                             <label for="levelDescription" class="form-label">Level Description</label>
-                            <textarea class="form-control" id="levelDescription" name="description" rows="4"></textarea>
+                            <textarea class="form-control" id="levelDescription" name="description" rows="4" required></textarea>
                         </div>
 
                         <!-- Input field for level owner name -->
