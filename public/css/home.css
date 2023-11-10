@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
 body {
   height: 100vh;
   padding: 0;
@@ -29,7 +38,7 @@ h2 {
 
 .main {
   position: relative;
-  top: 55%;
+  top: 10%;
   left: 40%;
   transform: translate(-50%, -50%);
   width: 80%;
@@ -38,11 +47,12 @@ h2 {
 .card {
   width: 80rem;
   max-width: 70rem;
+  margin-top: 23rem;
   height: 40rem;
   border-radius: 8px;
   border: none;
-  background: transparent;
-  /* box-shadow: rgba(2, 12, 29, 0.034) 3px 3px; */
+  background: rgba(250, 235, 215, 0.483);
+  box-shadow: rgba(2, 12, 29, 0.034) 3px 3px;
   overflow: hidden;
 }
 
