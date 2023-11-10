@@ -79,7 +79,7 @@
                         <div class="container carousel-content">
                             <h6 class="text-secondary h4 animated fadeInUp">Sign Language Solutions</h6>
                             <h1 class="text-white display-1 mb-4 animated fadeInRight">An Innovative Way of Learning
-                                Sign Language
+                                Sign Language.
                             </h1>
                             <p class="mb-4 text-white fs-5 animated fadeInDown">We provide you with all the bases needed
                                 to kick start your journey to a whole new world of communication.</p>
