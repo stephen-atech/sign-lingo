@@ -128,5 +128,21 @@ class ContentController extends Controller
     public function destroy(content $content)
     {
         //
+        try {
+            DB::beginTransaction();
+
+            if ($content->url) {
+                Storage::delete('public/images/content/' . $content->url);
+            }
+
+            $content->delete();
+            DB::commit();
+
+            return redirect()->back()->with('success', 'content deleted successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Error: ' . $e->getMessage());
+        }
     }
 }

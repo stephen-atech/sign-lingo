@@ -102,5 +102,15 @@ class LevelController extends Controller
     public function destroy(level $level)
     {
         //
+        // dd('deleted');
+        try {
+            DB::beginTransaction();
+            $level->delete();
+            DB::commit();
+            return redirect()->back()->with('success', 'Level Deleted');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'something went wrong');
+        }
     }
 }

@@ -28,11 +28,11 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <a href="{{ route('contents', $category->id) }}" class="btn btn-primary">Contents</a>
-                            <button href="#" class="btn btn-danger delete-button" data-toggle="modal"
+                            {{-- <button href="#" class="btn btn-danger delete-button" data-toggle="modal"
                                 data-target="#deleteModal1" data-item-id="{{ $category->id }}" data-droute="{{ route('category.delete', ':itemId') }}">
                                 Delete
-                            </button>
-
+                            </button> --}}
+                            <a href="{{ route('category.delete', $category->id) }}" onclick="confirm('You are about to delete a category')" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                 </div>

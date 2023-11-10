@@ -47,16 +47,18 @@ Route::middleware(['auth'])->group(function () {
         // level
         Route::get('/levels',[LevelController::class,'index'])->name('levels');
         Route::post('/level/add',[LevelController::class,'store'])->name('level.add');
+        Route::get('/level-delete{level}', [LevelController::class, 'destroy'])->name('level.delete');
         
         // category
         Route::get('/categories/{level}',[CategoryController::class,'index'])->name('level.category');
         Route::post('/category/add', [CategoryController::class, 'store'])->name('category.add');
-        Route::delete('/category-delete{category}',[CategoryController::class, 'destroy'])->name('category.delete');
+        Route::get('/category-delete{category}',[CategoryController::class, 'destroy'])->name('category.delete');
         
         // content
         Route::get('/contents/{category}',[ContentController::class,'index'])->name('contents');
         Route::post('/content/add', [ContentController::class, 'store'])->name('content.add');
         Route::put('/content/update', [ContentController::class, 'update'])->name('content.update');
+        Route::get('/content-delete{content}',[ContentController::class, 'destroy'])->name('content.delete');
         
         
         Route::get('/users', [HomeController::class, 'users'])->name('admin.users');

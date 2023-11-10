@@ -85,6 +85,7 @@ class CategoryController extends Controller
     public function destroy(category $category)
     {
         //
+        // dd('deleted');
         try {
             DB::beginTransaction();
             $category->delete();

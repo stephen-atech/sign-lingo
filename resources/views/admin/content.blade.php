@@ -40,7 +40,7 @@
                                 data-content-image="{{ route('storage.content.show', ['filename' => $content->image_url]) }}">
                                 Edit
                             </button>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="{{route('content.delete',$content->id)}}" onclick="confirm('You are about to delete a content')" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
         </div>
     </div>
 
-    
+
     <div class="modal fade" id="editContentModal" tabindex="-1" role="dialog" aria-labelledby="editContentModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
