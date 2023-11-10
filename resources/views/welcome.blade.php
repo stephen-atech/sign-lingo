@@ -84,7 +84,7 @@
                                             Dashboard
                                         @else
                                             Continue
-                                            Learnig
+                                            Learning
                                         @endif
 
                                     </button></a>
@@ -93,7 +93,7 @@
                                     <button type="button"
                                         class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">
                                         Start
-                                        Learnig
+                                        Learning
                                     </button>
                                 </a>
                             @endauth
