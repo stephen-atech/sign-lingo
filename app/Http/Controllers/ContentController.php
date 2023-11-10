@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\content;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,9 +13,13 @@ class ContentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(content $content)
+    public function index(Category $category)
     {
         //
+        if(auth()->user()->isAdmin){
+            return view('admin.content',compact('category'));
+        }
+        return view('learning',compact('category'));
     }
 
     /**
@@ -34,6 +39,7 @@ class ContentController extends Controller
             DB::beginTransaction();
 
             $content = new Content();
+            
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 $imageName = time() . '_' . $image->getClientOriginalName();
@@ -45,6 +51,8 @@ class ContentController extends Controller
                 $content->image_url =  $imageName;
             }
             $content->name = $request->name;
+            $content->description = $request->description;
+            $content->category_id = $request->category;
             $content->save();
 
             DB::commit();
@@ -55,7 +63,7 @@ class ContentController extends Controller
             }
             DB::rollBack();
 
-            return redirect()->back()->with('error', 'Something went wrong');
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -97,9 +105,12 @@ class ContentController extends Controller
                 $content->image_url =  $imageName;
             }
             $content->name = $request->name;
+            $content->description = $request->description;
+            // $content->category_id = $request->content_id;
             $content->save();
 
             DB::commit();
+            return redirect()->back()->with('success', 'Content updtaed successfully.');
             
         } catch (\Exception $e) {
             if (isset($imageName)) {
@@ -107,7 +118,7 @@ class ContentController extends Controller
             }
             DB::rollBack();
 
-            return redirect()->back()->with('error', 'Something went wrong');
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -117,5 +128,21 @@ class ContentController extends Controller
     public function destroy(content $content)
     {
         //
+        try {
+            DB::beginTransaction();
+
+            if ($content->url) {
+                Storage::delete('public/images/content/' . $content->url);
+            }
+
+            $content->delete();
+            DB::commit();
+
+            return redirect()->back()->with('success', 'content deleted successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Error: ' . $e->getMessage());
+        }
     }
 }
