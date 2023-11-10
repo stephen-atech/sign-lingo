@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/plugins/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('font/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
