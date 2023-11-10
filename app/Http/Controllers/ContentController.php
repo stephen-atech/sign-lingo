@@ -19,6 +19,7 @@ class ContentController extends Controller
         if(auth()->user()->isAdmin){
             return view('admin.content',compact('category'));
         }
+        return view('learning',compact('category'));
     }
 
     /**

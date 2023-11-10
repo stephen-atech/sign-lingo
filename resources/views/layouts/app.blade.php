@@ -1,86 +1,61 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>SignLingo</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="keywords" />
-    <meta content="" name="description" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap"
-        rel="stylesheet" />
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-
-    <!-- Libraries Stylesheet -->
-    <link href="{{asset('lib/animate/animate.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" />
-
-    <!-- Template Stylesheet -->
-    <link href="{{asset('css/home.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/plugins/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('font/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 
 <body>
-    <!-- Navbar Start -->
-    <div class="container-fluid bg-primary">
-        <div class="container">
-            <nav class="navbar fixed-top navbar-dark navbar-expand-lg py-0 d-flex justify-content-between">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="text-white fw-bold d-block">
-                        Sign<span class="text-secondary">Lingo</span>
-                    </h1>
-                </a>
-                <div class="dropdown">
-                    <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        {{auth()->user()->name}}
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
+    <div id="show_menuitems" class="my-menu">
+        <div class="menu-box">
+            <span>
+                <i onclick="hide_menu()" class="flaticon-cancel"></i>
+            </span>
+            <ul>
+                <li><a onclick="hide_menu()" href="{{ route('profile') }}">Profile</a></li>
+                <li>
+                    <a href="#"
+                        onclick="event.preventDefault(); hide_menu(); document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+
+            </ul>
         </div>
     </div>
-    <!-- Navbar End -->
 
-    <div>
-        @yield('content')
-    </div>
+    <section id="home">
+        <header>
+            <div class="container">
+                <div class="main-nav">
+                    <div class="logo">
+                        <a href="{{ route('home') }}" style="text-decoration: none;">
+                            <h2 style="color: white;">Sign<span style="color: rgb(52, 239, 176);">Lingo</span></h2>
+                        </a>
+                    </div>
+                    <div onclick="show_menu()" class="my-toogle">
+                        <span><i class="flaticon-menu"></i></span>
+                    </div>
+                </div>
+            </div>
+            @yield('content')
+        </header>
+    </section>
 
-
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{asset('js/lib/wow/wow.min.js')}}"></script>
-    <script src="{{asset('js/lib/easing/easing.min.js')}}"></script>
-    <script src="{{asset('js/lib/waypoints/waypoints.min.js')}}"></script>
-    <script src="{{asset('js/lib/owlcarousel/owl.carousel.min.js')}}"></script>
-
-    <!-- Template Javascript -->
-    {{-- <script src="./assets/js/script.js"></script> --}}
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
 </body>
 
 </html>

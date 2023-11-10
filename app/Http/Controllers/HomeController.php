@@ -27,7 +27,7 @@ class HomeController extends Controller
         if(auth()->user()->isAdmin){
             return view('admin.home');
         }
-        return view('home');
+        return redirect()->route('user.levels');
     }
 
     public function users()

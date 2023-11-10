@@ -69,8 +69,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/update-password', [ProfileController::class,'updatePassword'])->name('update-password');
 
 
-    Route::get('/levels/page',[LevelController::class,'index'])->name('user.levels');
-    Route::get('/categories/{category}', [CategoryController::class, 'index'])->name('user.category');
+    Route::get('/user/levels/page',[LevelController::class,'index'])->name('user.levels');
+    Route::get('/user/categories/{level}', [CategoryController::class, 'index'])->name('user.category');
+    Route::get('/user/contents/{category}', [ContentController::class, 'index'])->name('user.contents');
+
     
 
 });

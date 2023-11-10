@@ -14,10 +14,12 @@ class LevelController extends Controller
     public function index()
     {
         //
+        $levels = Level::all();
+
         if(auth()->user()->isAdmin){
-            $levels = Level::all();
             return view('admin.level',compact('levels'));
         }
+        return view('home',compact('levels'));
     }
 
     /**

@@ -18,6 +18,7 @@ class CategoryController extends Controller
         if (auth()->user()->isAdmin) {
             return view('admin.categories', compact('level'));
         }
+        return view('category',compact('level'));
     }
 
     /**
