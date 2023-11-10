@@ -4,7 +4,7 @@
         <div class="row">
             <div class="my-wrapper">
                 <div class="welcome-box">
-                    <h3>Welcome<span style="color: rgb(52, 239, 176);">Choose a lavel</span></h3>
+                    <h3>Welcome<span style="color: rgb(52, 239, 176);">Choose a level</span></h3>
                 </div>
             </div>
 

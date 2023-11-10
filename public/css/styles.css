@@ -399,6 +399,7 @@ section {
 
 section .container .row{
 	display: flex;
+	flex-direction: row;
 	justify-content: space-evenly;
 }
 
@@ -407,4 +408,11 @@ section .container .row{
 	margin-top: 100px;
 	margin-left: 20px;
 	color: #4f4f4f;
+}
+
+.carousel.slide.carousel-fade{
+	width: 80%;
+	max-width: 80%;
+	margin-top: 100px;
+	border: 50px #000 solif;
 }
