@@ -19,7 +19,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
+                                        {{-- <th>Phone</th> --}}
                                         <th>Start date</th>
 
                                     </tr>
@@ -29,7 +29,7 @@
                                         <tr>
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
-                                            <td>{{$user->phonenumber}}</td>
+                                            {{-- <td>{{$user->phonenumber}}</td> --}}
                                             <td>{{ $user->created_at->format('D, d M Y h:i:s a') }}</td>
                                         </tr>
                                     @endforeach
