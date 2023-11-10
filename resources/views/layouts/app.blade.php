@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="{{ asset('css/plugins/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('font/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 
 <body>
@@ -53,6 +57,31 @@
         </header>
     </section>
 
+    @if (Session::has('success'))
+        <script>
+            swal("Success", "{{ Session::get('success') }}", 'success', {
+                button: "OK",
+                // timer: 3000,
+            });
+        </script>
+    @endif
+    @if (Session::has('info'))
+        <script>
+            swal("Information", "{{ Session::get('info') }}", 'info', {
+                button: "OK",
+                // timer: 3000,
+            });
+        </script>
+    @endif
+    @if (Session::has('error'))
+        <script>
+            swal("Error", "{{ Session::get('error') }}", 'error', {
+                button: "OK",
+                // timer: 3000,
+                dangerMode: true,
+            });
+        </script>
+    @endif
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
