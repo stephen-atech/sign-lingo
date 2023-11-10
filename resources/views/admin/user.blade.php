@@ -33,7 +33,7 @@
                                             <td>{{ $user->created_at->format('D, d M Y h:i:s a') }}</td>
                                         </tr>
                                     @endforeach
-
+                                </tbody>
                             </table>
                         </div>
                     </div>
