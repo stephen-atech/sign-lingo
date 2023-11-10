@@ -286,6 +286,11 @@ body {
 	color: #fbfdff;
 	background: #a7e245;
 	transform: translateX(-30%);
+	cursor: pointer;
+}
+
+.btn-login:hover{
+	background: #86b638;
 }
 
 .btn-signup {
@@ -293,4 +298,10 @@ body {
 	background: #fbfdff;
 	box-shadow: inset 0 0 0 2px #a7e245;
 	transform: translateX(30%);
+	cursor: pointer;
+}
+
+.btn-signup:hover{
+	color: #fff;
+	background: #86b638;
 }
