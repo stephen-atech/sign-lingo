@@ -18,6 +18,7 @@ class CategoryController extends Controller
         if (auth()->user()->isAdmin) {
             return view('admin.categories', compact('level'));
         }
+        return view('category',compact('level'));
     }
 
     /**
@@ -35,7 +36,7 @@ class CategoryController extends Controller
     {
         try {
             DB::beginTransaction();
-            
+
             $category = new Category();
             $category->level_id = $request->levelId;
             $category->name = $request->CategoryName;
@@ -61,7 +62,6 @@ class CategoryController extends Controller
 
     public function showAll(Level $level)
     {
-        
     }
     /**
      * Show the form for editing the specified resource.
@@ -85,5 +85,15 @@ class CategoryController extends Controller
     public function destroy(category $category)
     {
         //
+        // dd('deleted');
+        try {
+            DB::beginTransaction();
+            $category->delete();
+            DB::commit();
+            return redirect()->back()->with('success', 'Category Deleted');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'something went wrong');
+        }
     }
 }

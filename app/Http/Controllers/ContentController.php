@@ -19,6 +19,7 @@ class ContentController extends Controller
         if(auth()->user()->isAdmin){
             return view('admin.content',compact('category'));
         }
+        return view('learning',compact('category'));
     }
 
     /**
@@ -104,9 +105,12 @@ class ContentController extends Controller
                 $content->image_url =  $imageName;
             }
             $content->name = $request->name;
+            $content->description = $request->description;
+            // $content->category_id = $request->content_id;
             $content->save();
 
             DB::commit();
+            return redirect()->back()->with('success', 'Content updtaed successfully.');
             
         } catch (\Exception $e) {
             if (isset($imageName)) {
@@ -114,7 +118,7 @@ class ContentController extends Controller
             }
             DB::rollBack();
 
-            return redirect()->back()->with('error', 'Something went wrong');
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -124,5 +128,21 @@ class ContentController extends Controller
     public function destroy(content $content)
     {
         //
+        try {
+            DB::beginTransaction();
+
+            if ($content->url) {
+                Storage::delete('public/images/content/' . $content->url);
+            }
+
+            $content->delete();
+            DB::commit();
+
+            return redirect()->back()->with('success', 'content deleted successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Error: ' . $e->getMessage());
+        }
     }
 }

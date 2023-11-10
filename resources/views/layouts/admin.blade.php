@@ -8,11 +8,9 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <link rel="stylesheet" href="{{ asset('css/admincss/css/dataTables.bootstrap5.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/admincss/css/dataTables.bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/admincss/css/style.css') }}" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
-        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -23,28 +21,39 @@
     <!-- top navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
-                aria-controls="offcanvasExample">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="offcanvasExample">
                 <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
             </button>
-            <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold"
-                href="#">{{ config('app.name', 'Laravel') }}</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavBar"
-                aria-controls="topNavBar" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="#">{{ config('app.name', 'Laravel') }}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavBar" aria-controls="topNavBar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="topNavBar">
                 <ul class="navbar-nav ms-auto my-3 my-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle ms-2" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle ms-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-user"></i>
 
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
+                                <a class="dropdown-item" href="{{ route('home') }}">
+                                    {{ __('Dashboard') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('levels') }}">
+                                    {{ __('Course Levels') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{route('admin.users')}}">
+                                    {{ __('Users') }}
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class=" dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
@@ -99,29 +108,29 @@
     </main>
 
     @if (Session::has('success'))
-        <script>
-            swal("Success", "{{ Session::get('success') }}", 'success', {
-                button: "OK",
-                // timer: 3000,
-            });
-        </script>
+    <script>
+        swal("Success", "{{ Session::get('success') }}", 'success', {
+            button: "OK",
+            // timer: 3000,
+        });
+    </script>
     @endif
     @if (Session::has('info'))
-        <script>
-            swal("Information", "{{ Session::get('info') }}", 'info', {
-                button: "OK",
-                // timer: 3000,
-            });
-        </script>
+    <script>
+        swal("Information", "{{ Session::get('info') }}", 'info', {
+            button: "OK",
+            // timer: 3000,
+        });
+    </script>
     @endif
     @if (Session::has('error'))
-        <script>
-            swal("Error", "{{ Session::get('error') }}", 'error', {
-                button: "OK",
-                // timer: 3000,
-                dangerMode: true,
-            });
-        </script>
+    <script>
+        swal("Error", "{{ Session::get('error') }}", 'error', {
+            button: "OK",
+            // timer: 3000,
+            dangerMode: true,
+        });
+    </script>
     @endif
     <script src="{{ asset('js/adminjs/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>

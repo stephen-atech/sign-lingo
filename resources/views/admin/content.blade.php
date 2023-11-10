@@ -40,7 +40,7 @@
                                 data-content-image="{{ route('storage.content.show', ['filename' => $content->image_url]) }}">
                                 Edit
                             </button>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="{{route('content.delete',$content->id)}}" onclick="confirm('You are about to delete a content')" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                         <!-- Input field for description -->
                         <div class="mb-3">
                             <label for="levelDescription" class="form-label">Level Description</label>
-                            <textarea class="form-control" id="levelDescription" name="description" rows="4"></textarea>
+                            <textarea class="form-control" id="levelDescription" name="description" rows="4" required></textarea>
                         </div>
 
                         <!-- Input field for level owner name -->
@@ -128,6 +128,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="modal fade" id="editContentModal" tabindex="-1" role="dialog" aria-labelledby="editContentModalLabel"
         aria-hidden="true">

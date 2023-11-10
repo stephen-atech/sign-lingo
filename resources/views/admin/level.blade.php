@@ -24,7 +24,8 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between">
                         <a href="{{route('level.category',$level->id)}}" class="btn btn-primary">Category</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
+                        <a href="{{ route('level.delete', $level->id) }}" onclick="confirm('You are about to delete a level')" class="btn btn-danger">Delete</a>
+
                     </div>
                 </div>
             </div>
