@@ -4,6 +4,7 @@ body {
 	font-family: "Poppins", sans-serif;
 	margin: 0;
 	box-sizing: border-box;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -56,7 +57,7 @@ section {
 	padding: 3.125rem 0;
 	height: 100vh;
 	position: relative;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 @media screen and (max-width: 575.98px) {
@@ -353,7 +354,7 @@ section {
 
 @media screen and (max-width: 575.98px) {
 	#home .my-wrapper .line {
-		display: block;
+		/* display: block; */
 		width: 20%;
 		margin: 0.9375rem;
 	}
@@ -397,23 +398,21 @@ section {
 }
 
 
-section .container .row{
+section .container .row {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 }
 
-.card{
+.card {
 	background-color: rgb(240, 236, 230);
 	margin-top: 100px;
 	margin-left: 20px;
 	color: #4f4f4f;
 }
 
-.carousel.slide.carousel-fade{
-	width: 80%;
-	max-width: 80%;
-	height: 50vh;
-	margin-top: 100px;
-	border: 50px #000 solid;
+.container .cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 1.5rem;
 }
