@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\content;
+use App\Models\Content;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -101,7 +101,7 @@ class ContentController extends Controller
                 // Upload the new image
                 $image = $request->file('image');
                 $imageName = time() . '_' . $image->getClientOriginalName();
-                $image->storeAs('public/images/store/', $imageName);
+                $image->storeAs('public/images/content/', $imageName);
                 $content->image_url =  $imageName;
             }
             $content->name = $request->name;
@@ -132,7 +132,7 @@ class ContentController extends Controller
             DB::beginTransaction();
 
             if ($content->url) {
-                Storage::delete('public/images/content/' . $content->url);
+                Storage::delete('public/images/content/' . $content->image_url);
             }
 
             $content->delete();
