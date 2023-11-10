@@ -4,9 +4,9 @@
 <div class="container">
     <h2>Profile</h2>
 
-    <div class="row">
+    <div class="row" style="display: flex; justify-content: center; align-items: center;">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card" style="width: 30rem;">
                 <div class="card-header">Edit Profile</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('update-profile') }}">
