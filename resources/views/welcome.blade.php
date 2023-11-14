@@ -48,7 +48,32 @@
                                     </svg>
                                 </div>
 
+<<<<<<< HEAD
                                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Documentation</h2>
+=======
+    <!-- Carousel Start -->
+    <div class="container-fluid px-0">
+        <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true"
+                    aria-label="First slide"></li>
+                <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <img src="{{ asset('img/carousel-1.jpg') }}" class="img-fluid" alt="First slide">
+                    <div class="carousel-caption">
+                        <div class="container carousel-content">
+                            <h6 class="text-secondary h4 animated fadeInUp">Sign Language Solutions</h6>
+                            <h1 class="text-white display-1 mb-4 animated fadeInRight">An Innovative Way of Learning
+                                Sign Language.
+                            </h1>
+                            <p class="mb-4 text-white fs-5 animated fadeInDown">We provide you with all the bases needed
+                                to kick start your journey to a whole new world of communication.</p>
+                            @auth
+                                <a href="{{ route('home') }}" class="ms-2"><button type="button"
+                                        class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">
+>>>>>>> eb4af5a51075f64d565532c5a6b95bc44ad5113f
 
                                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                                     Laravel has wonderful documentation covering every aspect of the framework. Whether you are a newcomer or have prior experience with Laravel, we recommend reading our documentation from beginning to end.
