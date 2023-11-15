@@ -86,9 +86,10 @@ class ContentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, content $content)
+    public function update(Request $request)
     {
         //
+        $content = Content::findorfail($request->content_id);
         try {
             DB::beginTransaction();
 
@@ -110,7 +111,7 @@ class ContentController extends Controller
             $content->save();
 
             DB::commit();
-            return redirect()->back()->with('success', 'Content updtaed successfully.');
+            return redirect()->back()->with('success', 'Content '.$content->name.' updated successfully.');
             
         } catch (\Exception $e) {
             if (isset($imageName)) {
