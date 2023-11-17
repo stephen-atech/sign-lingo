@@ -51,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/levels', [LevelController::class, 'index'])->name('levels');
         Route::post('/level/add', [LevelController::class, 'store'])->name('level.add');
         Route::get('/level-delete{level}', [LevelController::class, 'destroy'])->name('level.delete');
+        Route::put('/level-update', [LevelController::class, 'update'])->name('level.update');
+
 
         // Category routes
         Route::get('/categories/{level}', [CategoryController::class, 'index'])->name('level.category');
