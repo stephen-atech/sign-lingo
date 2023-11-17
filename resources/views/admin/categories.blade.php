@@ -26,13 +26,21 @@
                         <div class="card-body d-flex flex-column align-items-center justify-content-center">
                             <h4 class="card-title text-center">{{ $category->name }}</h4>
                         </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <a href="{{ route('contents', $category->id) }}" class="btn btn-primary">Contents</a>
-                            {{-- <button href="#" class="btn btn-danger delete-button" data-toggle="modal"
-                                data-target="#deleteModal1" data-item-id="{{ $category->id }}" data-droute="{{ route('category.delete', ':itemId') }}">
-                                Delete
-                            </button> --}}
-                            <a href="{{ route('category.delete', $category->id) }}" onclick="confirm('You are about to delete a category')" class="btn btn-danger">Delete</a>
+                        <div class="card-footer">
+                            <div class=" text-center mb-2">
+                                <a href="{{ route('contents', $category->id) }}" class="btn btn-success">Contents</a>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#editCategoryModal" data-category-id="{{ $category->id }}"
+                                    data-category-name="{{ $category->name }}">
+                                    Edit
+                                </button>
+                                <a href="{{ route('category.delete', $category->id) }}"
+                                    onclick="confirm('You are about to delete a category')"
+                                    class="btn btn-danger">Delete
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,7 +92,7 @@
                 </div>
                 <form id="deleteImageForm" action="#" method="POST">
                     @csrf
-                   @method('DELETE')
+                    @method('DELETE')
                     <div class="modal-body">
                         Are you sure you want to delete this category?
                     </div>
@@ -96,6 +104,62 @@
             </div>
         </div>
     </div>
+
+    <!-- Bootstrap Modal for Editing a category -->
+    <div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="editCategoryModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addLevelCategoryLabel">Edit Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('category.update') }}" method="POST">
+                    @csrf
+                    @method('PUT') {{-- Use the correct HTTP method for updating --}}
+
+                    <div class="modal-body">
+
+                        <!-- Input field for level name -->
+                        <div class="mb-3">
+                            <label for="editCategoryName" class="form-label">Category Name</label>
+                            <input type="text" class="form-control" id="editCategoryName" name="name" required>
+                        </div>
+
+                        <!-- Input field for content ID -->
+                        <input type="hidden" id="editCategoryId" name="category_id" value="">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit Changes</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript for image preview -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var editModal = document.getElementById('editCategoryModal');
+
+            // Attach click event to each edit button
+            var editButtons = document.querySelectorAll('.btn-primary[data-toggle="modal"]');
+            editButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var categoryId = this.getAttribute('data-category-id');
+                    var categoryName = this.getAttribute('data-category-name');
+
+                    // Set values in the modal
+                    editModal.querySelector('#editCategoryId').value = categoryId;
+                    editModal.querySelector('#editCategoryName').value = categoryName;
+                });
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function() {

@@ -44,6 +44,28 @@ class CategoryController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
+
+    /**
+     * Update a newly created resource in storage.
+     * Method to update Category of Levels
+     */
+    public function update(Request $request)
+    {
+        $category = Category::findorfail($request->category_id);
+        try {
+            DB::beginTransaction();
+            
+            $category->name = $request->name;
+            $category->save();
+
+            DB::commit();
+            return redirect()->back()->with('success', $category->name.' category created!!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
     
     /**
      * Remove the specified resource from storage.
