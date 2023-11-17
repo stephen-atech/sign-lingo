@@ -53,9 +53,10 @@ class LevelController extends Controller
      * Update the specified resource in storage.
      * Method to update a level
      */
-    public function update(Request $request, level $level)
+    public function update(Request $request)
     {
         //
+        $level = Level::findorfail($request->level_id);
         try {
             DB::beginTransaction();
 
@@ -63,7 +64,7 @@ class LevelController extends Controller
             $level->save();
 
             DB::commit();
-            return redirect()->back()->with('success', 'New level updated!!');
+            return redirect()->back()->with('success', $level->name.' level updated!!');
         } catch (\Exception $e) {
             DB::rollBack();
 
