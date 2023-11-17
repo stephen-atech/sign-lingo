@@ -34,7 +34,7 @@
                                 </button>
                                 {{-- <a href="{{ route('level.edit', $level->id) }}" class="btn btn-info">Edit</a> --}}
                                 <a href="{{ route('level.delete', $level->id) }}"
-                                    onclick="confirm('You are about to delete a level')" class="btn btn-danger">Delete</a>
+                                    onclick=" return confirm('You are about to delete a level')" class="btn btn-danger">Delete</a>
                             </div>
                         </div>
                     </div>
