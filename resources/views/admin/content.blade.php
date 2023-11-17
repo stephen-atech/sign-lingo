@@ -40,7 +40,7 @@
                                 data-content-image="{{ route('storage.content.show', ['filename' => $content->image_url]) }}">
                                 Edit
                             </button>
-                            <a href="{{route('content.delete',$content->id)}}" onclick="confirm('You are about to delete a content')" class="btn btn-danger">Delete</a>
+                            <a href="{{route('content.delete',$content->id)}}" onclick=" return confirm('You are about to delete a content')" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                 </div>
