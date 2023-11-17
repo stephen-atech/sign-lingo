@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
         // Category routes
         Route::get('/categories/{level}', [CategoryController::class, 'index'])->name('level.category');
         Route::post('/category/add', [CategoryController::class, 'store'])->name('category.add');
+        Route::put('/category-update', [CategoryController::class, 'update'])->name('category.update');
         Route::get('/category-delete{category}', [CategoryController::class, 'destroy'])->name('category.delete');
 
         // Content routes
