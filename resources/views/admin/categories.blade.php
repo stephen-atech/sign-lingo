@@ -37,7 +37,7 @@
                                     Edit
                                 </button>
                                 <a href="{{ route('category.delete', $category->id) }}"
-                                    onclick="confirm('You are about to delete a category')"
+                                    onclick="return confirm('You are about to delete a category')"
                                     class="btn btn-danger">Delete
                                 </a>
                             </div>
